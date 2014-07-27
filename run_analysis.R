@@ -11,13 +11,13 @@ current_resource <- function(resource, dir){
   x
 }
 
-activity.labels <- function( total_activities, activity_labels, nrows_to_read ){
+activity.labels <- function( total_activities, activity_desc, nrows_to_read ){
   if( nrows_to_read == -1 ){
-    factor( total_activities$V1, labels=activity_labels$V2)
+    factor( total_activities$V1, labels=activity_desc$V2)
   }
   else{
     present_levels <- as.numeric(levels(factor(total_activities$V1)))
-    rel_activities <- activity_labels[ present_levels,]
+    rel_activities <- activity_desc[ present_levels,]
     total.activities.factor <- factor( total_activities$V1, labels= rel_activities$V2 )
     total.activities.factor
   }
@@ -27,7 +27,8 @@ generate_tidy_data <- function( nrows_to_read = -1, output_file_name = "tidy_dat
   test_activities <- read.table(current_resource('test/y_test.txt', dir), nrows = nrows_to_read )
   train_activities <- read.table(current_resource('train/y_train.txt', dir), nrows = nrows_to_read)
   total_activities <- rbind( train_activities, test_activities )
-  activity_labels <- activity.labels(total_activities, activity_labels, nrows_to_read)
+  activity_description <- read.table( current_resource('activity_labels.txt',dir))
+  activity_labels <- activity.labels(total_activities, activity_description, nrows_to_read)
   subject_train <- read.table(current_resource('train/subject_train.txt', dir), nrows = nrows_to_read)
   subject_test <- read.table(current_resource('test/subject_test.txt', dir), nrows = nrows_to_read )
   subject <- rbind( subject_train, subject_test )
