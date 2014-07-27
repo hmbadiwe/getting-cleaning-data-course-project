@@ -69,7 +69,7 @@ generate_tidy_data <- function(){
   write.table( end_result, file="tidy_data.txt")
 }
 
-generate_tidy_data()
+#generate_tidy_data()
 
 
 
