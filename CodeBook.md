@@ -3,7 +3,9 @@ Code Book for course project
 
 ### Data Description
 The subject field is a number that represents the list of all the subjects. The range is from 1-30.
+
 The activity field represents six different activities that the users were engaged in during testing.
+
 The activities are as follows : 
 
 * WALKING
@@ -14,9 +16,13 @@ The activities are as follows :
 * LAYING
 
 These elements are the mean of the standard and deviation values organized by subject and activity. The variable names are formatted to describe the name of each measurement.
+
 Each variable is represented as such : measurement.quantity.[axis]
+
 The axes values are optional.
+
 The measurements were measured on subjects wearing a smartphone (Samsung Galaxy S II) on the waist.
+
 The measurements are listed as follows:
 
 
